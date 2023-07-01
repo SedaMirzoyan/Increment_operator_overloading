@@ -20,7 +20,8 @@ public:
 	{
 		std::cout << __func__ << std::endl;
 	}
-	
+
+	//pre increment
 	int operator++(int)			
 	{
 		int tmp;
@@ -32,7 +33,7 @@ public:
 		return tmp;
 	}
 
-
+	//post increment
 	int& operator++()
 	{
 		a++;
