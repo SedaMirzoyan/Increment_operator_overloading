@@ -21,26 +21,26 @@ public:
 		std::cout << __func__ << std::endl;
 	}
 
-	//pre increment
-	int operator++(int)			
+	A operator++(int)	
 	{
-		int tmp;
-		a = a++;
-		tmp = a;
-		tmp = tmp++;
-		std::cout << "a++ " << tmp << std::endl;
+		A tmp(*this);
+		this->a++;
 
 		return tmp;
 	}
 
-	//post increment
-	int& operator++()
+	A& operator++() //++a
 	{
-		a++;
-		std::cout << "++a " << a << std::endl;
+		this->a++;
 
-		return a;
+		return *this;
 	}
+
+	void print()
+	{
+		std::cout << "a = " << this->a << std::endl;
+	}
+
 };
 
 
@@ -49,8 +49,20 @@ int main()
 	A ob(3);
 	A ob1(3);
 
+	std::cout << "ob_assign print\n";
+	A ob_assign = ++ob;
+	ob_assign.print();
+	std::cout << "ob1_assign print\n";
+	A ob1_assign = ob1++;
+	ob1_assign.print();
+
 	++ob;
 	ob1++;
+
+	std::cout << "ob print\n";
+	ob.print();
+	std::cout << "ob1 print\n";
+	ob1.print();
 
 	return 0;
 }
